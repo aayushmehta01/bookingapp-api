@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import connectDB from './db/index.js';
 import authRoute from './routes/auth.routes.js'
 import hotelsRoute from './routes/hotel.routes.js'
@@ -18,7 +19,8 @@ app.get('/', (req, res)=>{
 
 // use middlewares
 
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelsRoute);
