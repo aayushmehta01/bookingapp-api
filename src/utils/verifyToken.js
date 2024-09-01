@@ -15,21 +15,24 @@ export const verifyToken = (req, res, next) => {
 };
 
 export const verifyUser = (req, res, next) => {
-  verifyToken(req, res, next, () => {
-    if (req.user.id === req.params.id || req.user.isAdmin) {
-      next();
-    } else {
-      return next(createError(403, "You are not authorized!"));
-    }
-  });
+    verifyToken(req, res, () => {
+        console.log(`User ID: ${req.user.id}, Params ID: ${req.params.id}, Is Admin: ${req.user.isAdmin}`);
+        if (req.user.id === req.params.id || req.user.isAdmin) {
+            next();
+        } else {
+            return next(createError(403, "You are not authorized to update this account!"));
+        }
+    });
 };
 
+
 export const verifyAdmin = (req, res, next) => {
-  verifyToken(req, res, next, () => {
-    if (req.user && req.user.isAdmin) {
-      next();
-    } else {
-      return next(createError(403, "You are not authorized!"));
-    }
-  });
+    verifyToken(req, res, () => {
+        console.log(req.user); // Log the user object
+        if (req.user && req.user.isAdmin) {
+            next();
+        } else {
+            return next(createError(403, "You are not authorized!"));
+        }
+    });
 };
