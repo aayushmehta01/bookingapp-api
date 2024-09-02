@@ -20,7 +20,10 @@ app.get('/', (req, res)=>{
 
 // use middlewares
 
-app.use(cors());
+app.use(cors({
+    origin: 'localhost:3000',
+    credentials: true,
+}));
 app.use(express.json());
 app.use(cookieParser());
 
