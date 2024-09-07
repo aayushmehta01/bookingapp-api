@@ -8,7 +8,7 @@ import hotelsRoute from './routes/hotel.routes.js'
 import usersRoute from './routes/user.routes.js'
 import roomsRoute from './routes/room.routes.js'
 
-// checking commit
+// testing git
 
 dotenv.config({
     path: './env'
