@@ -3,6 +3,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { createError } from '../utils/apiError.js'
 
+// testing git
+
 export const register = async(req, res, next) => {
     try{
         const salt = bcrypt.genSaltSync(10);
