@@ -1,6 +1,15 @@
 import jwt from "jsonwebtoken";
 import { createError } from "../utils/apiError.js";
 
+export const generateResetToken = (userId) => {
+    const token = jwt.sign(
+        { id: userId },
+        process.env.JWT,
+        { expiresIn: "1h" }
+    );
+    return token;
+};
+
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) {
